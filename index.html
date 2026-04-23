@@ -94,6 +94,7 @@
         // 1. DATA FOR ALL CATEGORIES
         const categoryDetails = {
             "Followers": {
+                desc: "🌟 Indian Real Followers. High Quality, Non-Drop & Stable.",
                 items: [
                     ["5K", 95, "https://rzp.io/rzp/nx6QObA"],
                     ["10K", 150, "https://rzp.io/rzp/clDxeR8"],
@@ -103,7 +104,8 @@
                 ]
             },
             "Likes": {
-                items: [
+                desc: "❤️ Indian High-Quality Post/Reel Likes. Lifetime Refill Guarantee.",
+        items: [
                     ["5K", 25, "https://rzp.io/rzp/xoK831M"],
                     ["10K", 45, "https://rzp.io/rzp/OOBBPxDe"],
                     ["20K", 80, "https://rzp.io/rzp/kbMil8q"],
@@ -112,6 +114,7 @@
                 ]
             },
             "Views": {
+                desc: "🎬 High-Speed Video/Reel Views. Instant Start & Fast Delivery.",
                 items: [
                     ["10K", 15, "https://rzp.io/rzp/l6A9rB8C"],
                     ["20K", 25, "https://rzp.io/rzp/xoK831M"],
@@ -120,6 +123,7 @@
                 ]
             },
             "Shares": {
+                desc: "📈 Boost Reach with Instant Shares from high-quality accounts.",
                 items: [
                 ["5K", 25, "https://rzp.io/rzp/xoK831M"],
                     ["10K", 45, "https://rzp.io/rzp/OOBBPxDe"],
@@ -147,27 +151,29 @@
 
         // 3. GENERATE CARDS
         function generateCards(dataKey) {
-            const gridId = dataKey.toLowerCase() + "-grid";
-            const grid = document.getElementById(gridId);
-            const category = categoryDetails[dataKey];
-            if(!grid || !category) return;
+    const gridId = dataKey.toLowerCase() + "-grid";
+    const grid = document.getElementById(gridId);
+    const category = categoryDetails[dataKey];
+    if(!grid || !category) return;
 
-            grid.innerHTML = ""; 
-            category.items.forEach((item, index) => {
-                const uniqueId = `link-${dataKey}-${index}`;
-                grid.innerHTML += `
-                    <div class="card">
-                        <h3>${item[0]} <span class="category-name">${dataKey}</span></h3>
-                        <div class="price">₹${item[1]}</div>
-                        <p class="card-feature">Indian Service | Non-Drop</p>
-                        <input type="text" id="${uniqueId}" placeholder="Enter Instagram Link..." class="link-input">
-                        <a href="${item[2]}" 
-                           onclick="return validateAndRedirect(event, '${uniqueId}')" 
-                           class="buy-btn">Buy Now</a>
-                    </div>
-                `;
-            });
-        }
+    // This part adds the description at the top of the grid
+    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; margin-bottom: 20px; color: var(--text-muted); font-style: italic;">${category.desc}</div>`; 
+
+    category.items.forEach((item, index) => {
+        const uniqueId = `link-${dataKey}-${index}`;
+        grid.innerHTML += `
+            <div class="card">
+                <h3>${item[0]} <span class="category-name">${dataKey}</span></h3>
+                <div class="price">₹${item[1]}</div>
+                <p class="card-feature">Indian Service | Non-Drop</p>
+                <input type="text" id="${uniqueId}" placeholder="Enter Instagram Link..." class="link-input">
+                <a href="${item[2]}" 
+                   onclick="return validateAndRedirect(event, '${uniqueId}')" 
+                   class="buy-btn">Buy Now</a>
+            </div>
+        `;
+    });
+}
         
         // 4. RUN ON LOAD
         window.onload = function() {
