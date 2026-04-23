@@ -232,30 +232,29 @@ body {
     border-color: var(--primary) !important;
 }
 /* The Package Title (e.g., 5K Followers) - Now Large & Orange */
+/* The Package Title (e.g., 5K Followers) - Reduced Size */
 .card h3 {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: var(--primary); /* Instagram Orange */
-    margin-bottom: 5px;
-    letter-spacing: -1px;
+    font-size: 1.5rem; /* Reduced from 2.2rem */
+    font-weight: 700;
+    color: var(--primary); 
+    margin-bottom: 2px;
+    letter-spacing: -0.5px;
 }
 
-/* The Price (e.g., ₹95) - Now Smaller & White */
+/* The Price (e.g., ₹95) - Adjusted to match */
 .price {
-    font-size: 1.2rem;
+    font-size: 1rem; /* Reduced from 1.2rem */
     font-weight: 600;
     color: #ffffff;
-    margin-bottom: 15px;
-    opacity: 0.9;
+    margin-bottom: 12px;
+    opacity: 0.8;
 }
 
-/* Adjust the card feature text color for better contrast */
-.card-feature {
-    font-size: 11px;
-    color: #00ff88;
-    background: rgba(0, 255, 136, 0.1);
-    display: inline-block;
-    padding: 2px 10px;
-    border-radius: 20px;
-    margin-bottom: 15px;
+/* Optional: Make the card padding slightly tighter for a cleaner look */
+.card {
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid #222;
+    transition: 0.3s;
 }
