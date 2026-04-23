@@ -15,7 +15,6 @@
             <ul class="nav-links">
                 <li><a href="#packages">Services</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
                 <li><a href="https://wa.me/918921879334" class="nav-btn">Support</a></li>
             </ul>
         </div>
@@ -53,14 +52,41 @@
 
     <section id="about" class="info-section">
         <div class="container">
-            <h2>About Aishwarya KART</h2>
-            <p>We are a Palakkad-based digital service provider dedicated to helping influencers and businesses grow.</p>
+            <h2> Aishwarya KART</h2>
+            <h3>Your Growth, Our Mission</h3>
+            <p>Aishwarya KART is India’s premium destination for high-quality Instagram engagement. We specialize in providing Indian Non-Drop followers, likes, and views designed to bypass the noise and get your content noticed.
+            Founded and operated out of Palakkad, Kerala,India we pride ourselves on transparency and speed. With a 100% safe delivery guarantee and secure UPI/Razorpay integration, we help you focus on creating content while we handle the growth.
+            Real People. Real Growth. Zero Risk.</p>
         </div>
     </section>
 
     <footer class="footer">
-        <div class="footer-copyright">
-            <p>&copy; 2026 Aishwarya KART. All rights reserved. | Founded by Abhinav K.M.</p>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <h3>Aishwarya <span style="color: #ff4d4d;">KART</span></h3>
+                <p>India's trusted SMM partner. Specializing in high-quality, non-drop engagement for Instagram growth.</p>
+            </div>
+            
+            <div class="footer-contact">
+                <h4>Contact Details</h4>
+                <p>📍 Location: Palakkad, Kerala, India</p>
+                <p>📧 Email: aishwaryakart@gmail.com</p>
+                <p>📞 WhatsApp: +91 8921879334</p>
+                <p>⏰ Hours: 24/7 Instant Delivery</p>
+            </div>
+
+            <div class="footer-trust">
+                <h4>Why Choose Us?</h4>
+                <ul>
+                    <li>✅ 100% Safe (No Password)</li>
+                    <li>✅ Instant Start</li>
+                    <li>✅ Non-Drop Guarantee</li>
+                    <li>✅ Secure UPI/Razorpay</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-copyright" style="text-align: center; margin-top: 40px; border-top: 1px solid #444; padding-top: 20px;">
+            <p>&copy; 2026 Aishwarya KART. All rights reserved. | Founded by Aishwarya Menon.</p>
         </div>
     </footer>
 
@@ -155,15 +181,36 @@
 
         // 5. VALIDATION
         function validateAndRedirect(event, inputId) {
-            const inputField = document.getElementById(inputId);
-            if (inputField.value.trim() === "") {
-                event.preventDefault();
-                alert("⚠️ Please paste your Instagram Link first!");
-                inputField.focus();
-                return false;
-            }
-            return true; 
-        }
+    const inputField = document.getElementById(inputId);
+    const parent = inputField.parentElement;
+    
+    // 1. Remove any old error message if it exists
+    const oldError = parent.querySelector('.error-msg');
+    if (oldError) oldError.remove();
+    inputField.style.borderColor = "#ccc"; // Reset border color
+
+    // 2. Check if the input is empty
+    if (inputField.value.trim() === "") {
+        event.preventDefault(); // Stop the link from opening
+        
+        // 3. Create the error message element
+        const error = document.createElement('div');
+        error.className = 'error-msg';
+        error.style.color = "#ff4d4d";
+        error.style.fontSize = "12px";
+        error.style.marginTop = "5px";
+        error.style.fontWeight = "600";
+        error.innerText = "⚠️ Please paste your Instagram Link first!";
+        
+        // 4. Highlight the box and add the message below it
+        inputField.style.borderColor = "#ff4d4d";
+        inputField.after(error);
+        
+        inputField.focus();
+        return false;
+    }
+    return true; 
+}
     </script>
 </body>
 </html>
