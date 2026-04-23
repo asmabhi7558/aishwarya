@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aishwarya KART | Premium Instagram Growth</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">Aishwarya <span class="logo-accent">KART</span></div>
+            <ul class="nav-links">
+                <li><a href="#packages">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="https://wa.me/91XXXXXXXXXX" class="nav-btn">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>High-Quality Instagram Services</h1>
+        <p>Boost your Reels and Profile with Indian Non-Drop engagement</p>
+    </header>
+
+    <div class="container" id="packages">
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openCategory(event, 'Followers')">Followers</button>
+            <button class="tab-btn" onclick="openCategory(event, 'Likes')">Likes</button>
+            <button class="tab-btn" onclick="openCategory(event, 'Views')">Views</button>
+            <button class="tab-btn" onclick="openCategory(event, 'Shares')">Shares</button>
+        </div>
+
+        <div id="Followers" class="tab-content active">
+            <div class="pricing-grid" id="followers-grid"></div>
+        </div>
+
+        <div id="Likes" class="tab-content">
+            <div class="pricing-grid" id="likes-grid"></div>
+        </div>
+
+        <div id="Views" class="tab-content">
+            <div class="pricing-grid" id="views-grid"></div>
+        </div>
+
+        <div id="Shares" class="tab-content">
+            <div class="pricing-grid" id="shares-grid"></div>
+        </div>
+    </div>
+
+    <section id="about" class="info-section">
+        <div class="container">
+            <h2>About Aishwarya KART</h2>
+            <p>We are a Palakkad-based digital service provider dedicated to helping influencers and businesses grow. We understand the Instagram algorithm and provide safe, high-retention services to boost your social proof.</p>
+        </div>
+    </section>
+
+    <section id="experience" class="info-section grey-bg">
+        <div class="container">
+            <h2>Our Experience</h2>
+            <p>With thousands of successful orders processed, our team ensures that every like, view, and follower is delivered securely without ever needing your account password.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <h3>Aishwarya KART</h3>
+                <p>India's trusted SMM partner. Specializing in high-quality, non-drop engagement for Instagram growth.</p>
+            </div>
+            
+            <div class="footer-contact">
+                <h4>Contact Details</h4>
+                <p>📍 Location: Palakkad, Kerala, India</p>
+                <p>📧 Email: support@aishwaryakart.com</p>
+                <p>⏰ Hours: 24/7 Instant Delivery</p>
+            </div>
+
+            <div class="footer-trust">
+                <h4>Why Choose Us?</h4>
+                <ul>
+                    <li>✅ 100% Safe (No Password)</li>
+                    <li>✅ Instant Start</li>
+                    <li>✅ Non-Drop Guarantee</li>
+                    <li>✅ Secure UPI/Razorpay</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2026 Aishwarya KART. All rights reserved. | Founded by Abhinav K.M.</p>
+        </div>
+    </footer>
+
+    <script>
+        const categoryDetails = {
+            "Followers": {
+                desc: "🌟 Indian Real Followers. High Quality, Non-Drop & Stable profiles.",
+                items: [["5K", 95], ["10K", 150], ["20K", 280], ["50K", 500], ["100K", 850]]
+            },
+            "Likes": {
+                desc: "❤️ Indian High-Quality Likes. Post/Reel Likes with Lifetime Refill.",
+                items: [["5K", 25], ["10K", 45], ["20K", 80], ["50K", 175], ["100K", 300]]
+            },
+            "Views": {
+                desc: "🔥 Video/Reel Views. High speed delivery, 100% Non-Drop & safe.",
+                items: [["10K", 10], ["20K", 18], ["50K", 40], ["100K", 70]]
+            },
+            "Shares": {
+                desc: "✈️ Boost Reel Reach. Instant shares from high-quality active accounts.",
+                items: [["5K", 25], ["10K", 45], ["20K", 80], ["50K", 175], ["100K", 300]]
+            }
+        };
+    
+        function validateAndRedirect(event, inputId) {
+    const inputField = document.getElementById(inputId);
+    
+    // Remove any existing error message first
+    const existingError = inputField.parentElement.querySelector('.error-msg');
+    if (existingError) existingError.remove();
+
+    if (inputField.value.trim() === "") {
+        event.preventDefault(); // Stop the redirect
+        
+        // Create the error message element
+        const error = document.createElement('div');
+        error.className = 'error-msg';
+        error.innerText = "⚠️ Please paste your Instagram Link!";
+        
+        // Insert it right after the input box
+        inputField.after(error);
+        
+        // Highlight the box
+        inputField.style.borderColor = "#ff4d4d";
+        inputField.focus();
+        
+        return false;
+    }
+    return true;
+}
+    
+function generateCards(dataKey) {
+        const gridId = dataKey.toLowerCase() + "-grid";
+        const grid = document.getElementById(gridId);
+        const category = categoryDetails[dataKey];
+        
+        const oldDesc = grid.parentElement.querySelector('.category-info');
+        if (oldDesc) oldDesc.remove();
+
+        grid.parentElement.insertAdjacentHTML('afterbegin', `<p class="category-info">${category.desc}</p>`);
+
+        grid.innerHTML = "";
+        category.items.forEach((item, index) => {
+            const uniqueId = `link-${dataKey}-${index}`;
+            
+            // This line adds the category name (e.g., "5K Followers")
+            const titleText = `${item[0]} ${dataKey}`;
+
+            grid.innerHTML += `
+                <div class="card">
+                    <h3>${titleText}</h3>
+                    <div class="price">₹${item[1]}</div>
+                    <p class="card-feature">Indian Service | Non-Drop</p>
+                    <input type="text" id="${uniqueId}" placeholder="Enter Instagram Link..." class="link-input">
+                    <a href="https://rzp.io/rzp/WzsoKPkF" 
+                       onclick="validateAndRedirect(event, '${uniqueId}')" 
+                       class="buy-btn">Buy Now</a>
+                </div>
+            `;
+        });
+    }
+        // Initialize all grids
+        generateCards('Followers');
+        generateCards('Likes');
+        generateCards('Views');
+        generateCards('Shares');
+    
+        function openCategory(evt, categoryName) {
+            let i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(categoryName).style.display = "block";
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
